@@ -1,0 +1,47 @@
+import random
+import time
+
+
+list1 = ["a","b","c","d","e","f","g","h","i","@","#","$","%","^","&","*","(",")","_","-","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0","!"]
+password = []
+finalpassword = []
+scramble = []
+selection = []
+print("MASON'S PASSWORD GENERATOR")
+time.sleep(1)
+length = input("how many characters long would you like your password to be?")
+
+passwordlength = range(0, length)
+
+criteriamet = False
+
+while criteriamet == False:
+    for i in passwordlength:
+        selection = random.choice(list1)
+        password.append(selection)
+        if selection.__contains__("@" or "!" or "#"):
+            criteriamet = True
+
+password.reverse()
+print(password[:length])
+
+#74 total characters
+cracking = 74 ** length
+seconds = cracking / 1000000000
+minutes = seconds / 60
+hours = minutes / 60
+days = hours / 24
+months = days / 30
+years = months / 12
+
+print(" ")
+print("...")
+print("BRUTE FORCE ATTACK PROBABILITY:")
+print("This password has: " + str(cracking) + " possible combinations." )
+print("A computer brute-forcing 1 billion passwords per SECOND would take")
+print ("Seconds: " + str(seconds))
+print ("Minutes: " + str(minutes))
+print ("Hours: " + str(hours))
+print ("Days: " + str(days))
+print ("Months: " + str(months))
+print ("years: " + str(years))
